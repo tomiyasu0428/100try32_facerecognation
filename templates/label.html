@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>顔認識テスト - ラベル入力</title>
+</head>
+<body>
+    <h1>顔認識テスト - ラベル入力</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <label for="label">この人物の名前を入力してください：</label><br>
+        <input type="text" id="label" name="label" required><br>
+        <button type="submit">登録</button>
+    </form>
+
+    <p><a href="{{ url_for('index') }}">トップページに戻る</a></p>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>新規人物登録</title>
+</head>
+<body>
+  <h1>新規人物登録</h1>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <form method="POST">
+    <label for="label">ラベル（人物名など）:</label>
+    <input type="text" name="label">
+    <button type="submit">登録</button>
+  </form>
+</body>
+</html>

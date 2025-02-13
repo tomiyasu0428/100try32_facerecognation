@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登録済みの顔データ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .face-data {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .face-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .stat-item {
+            padding: 5px;
+            background-color: #fff;
+            border-radius: 3px;
+        }
+        .stat-label {
+            font-weight: bold;
+            color: #666;
+        }
+        .registration-time {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>登録済みの顔データ</h1>
+    
+    {% if face_data %}
+        {% for face in face_data %}
+            <div class="face-data">
+                <div class="face-name">{{ face.name }}</div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-label">平均値:</span>
+                        {{ "%.3f"|format(face.mean) }}
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">標準偏差:</span>
+                        {{ "%.3f"|format(face.std) }}
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">最小値:</span>
+                        {{ "%.3f"|format(face.min) }}
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">最大値:</span>
+                        {{ "%.3f"|format(face.max) }}
+                    </div>
+                </div>
+                <div class="registration-time">
+                    登録日時: {{ face.registration_time|datetime }}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>登録されている顔データはありません。</p>
+    {% endif %}
+    
+    <a href="{{ url_for('index') }}" class="back-link">トップページに戻る</a>
+</body>
+</html>

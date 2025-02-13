@@ -1,0 +1,32 @@
+venv
+.env
+__pycache__/
+*.py[cod]
+*$py.class
+
+# アプリケーション固有のデータ
+/static/uploads/*
+/temp/*
+/data/registered_faces.json
+
+# システムファイル
+.DS_Store
+Thumbs.db
+
+# IDE設定
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ログファイル
+*.log
+
+# 環境設定
+.env.local
+.env.development
+.env.production
+
+# 依存関係
+pip-log.txt
+pip-delete-this-directory.txt
